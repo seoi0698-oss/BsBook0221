@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선형수 출판기념회 초대장</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a3a6b;
+            --accent-blue: #2c5aa0;
+            --light-blue: #e8f0f8;
+            --text: #333333;
+            --text-light: #666666;
+            --white: #ffffff;
+            --green: #b8d4a8;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Noto Serif KR', serif;
+            background: linear-gradient(135deg, #e0eef7 0%, #f5e8d4 100%);
+            color: var(--text);
+            overflow-x: hidden;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 메인 컨테이너 */
+        .container {
+            max-width: 420px;
+            margin: 0 auto;
+            min-height: 100vh;
+            background: var(--white);
+            box-shadow: 0 20px 60px rgba(26, 58, 107, 0.15);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 배경 데코레이션 */
+        .bg-decoration {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .deco-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.05;
+        }
+
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            top: -100px;
+            right: -100px;
+        }
+
+        .circle-2 {
+            width: 250px;
+            height: 250px;
+            background: var(--accent-blue);
+            bottom: -80px;
+            left: -80px;
+        }
+
+        /* 헤더 섹션 */
+        .header {
+            padding: 35px 25px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent-blue) 100%);
+            color: var(--white);
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .invitation-badge {
+            display: inline-block;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--light-blue);
+            margin-bottom: 12px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .main-title {
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 12px;
+            animation: fadeInDown 0.8s ease-out 0.1s backwards;
+        }
+
+        .main-subtitle {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--light-blue);
+            font-weight: 300;
+            animation: fadeInDown 0.8s ease-out 0.2s backwards;
+            letter-spacing: 0.5px;
+        }
+
+        /* 컨텐츠 섹션 */
+        .content {
+            flex: 1;
+            padding: 35px 25px;
+            position: relative;
+            z-index: 2;
+            overflow-y: auto;
+        }
+
+        .section {
+            margin-bottom: 32px;
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.3s; }
+        .section:nth-child(2) { animation-delay: 0.4s; }
+        .section:nth-child(3) { animation-delay: 0.5s; }
+        .section:nth-child(4) { animation-delay: 0.6s; }
+        .section:nth-child(5) { animation-delay: 0.7s; }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 북 커버 이미지 섹션 */
+        .book-cover-section {
+            text-align: center;
+            margin-bottom: 25px;
+            width: 100%;
+        }
+
+        .book-cover-container {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            max-width: 420px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(26, 58, 107, 0.15);
+        }
+
+        .book-cover {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        /* 책 정보 */
+        .book-info {
+            background: linear-gradient(135deg, var(--light-blue) 0%, rgba(184, 212, 168, 0.15) 100%);
+            padding: 22px;
+            border-radius: 10px;
+            border-left: 5px solid var(--accent-blue);
+            margin-bottom: 0;
+        }
+
+        .book-title {
+            font-size: 23px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .book-author {
+            font-size: 16px;
+            color: var(--accent-blue);
+            margin-bottom: 4px;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-weight: 500;
+        }
+
+        .book-publisher {
+            font-size: 15px;
+            color: var(--text-light);
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        /* 행사 정보 */
+        .event-details {
+            display: grid;
+            gap: 16px;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+
+        .detail-icon {
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--primary));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: var(--white);
+            flex-shrink: 0;
+        }
+
+        .detail-text {
+            flex: 1;
+            padding-top: 2px;
+        }
+
+        .detail-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-blue);
+            font-weight: 600;
+            margin-bottom: 4px;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .detail-value {
+            font-size: 18px;
+            color: var(--primary);
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        /* 메시지 섹션 */
+        .message-section {
+            background: linear-gradient(135deg, rgba(232, 240, 248, 0.6) 0%, rgba(184, 212, 168, 0.08) 100%);
+            padding: 24px;
+            border-radius: 10px;
+            border: 2px solid var(--light-blue);
+            text-align: center;
+        }
+
+        .message-main {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary);
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .message-sub {
+            font-size: 17px;
+            color: var(--primary);
+            line-height: 1.8;
+            margin-bottom: 14px;
+            font-weight: 500;
+        }
+
+        .message-wish {
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.7;
+            padding-top: 12px;
+            border-top: 1px solid rgba(44, 90, 160, 0.2);
+        }
+
+        /* 초대자 정보 */
+        .inviter-section {
+            background: linear-gradient(135deg, rgba(26, 58, 107, 0.04) 0%, rgba(44, 90, 160, 0.04) 100%);
+            padding: 22px;
+            border-radius: 10px;
+            border-top: 3px solid var(--primary);
+            text-align: center;
+        }
+
+        .inviter-party {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 13px;
+            color: var(--accent-blue);
+            margin-bottom: 10px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .inviter-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+
+        .inviter-position {
+            font-size: 15px;
+            color: var(--text-light);
+            font-family: 'Noto Sans KR', sans-serif;
+            margin-bottom: 12px;
+        }
+
+        .inviter-gesture {
+            font-size: 16px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* 풋터 */
+        .footer {
+            padding: 25px;
+            text-align: center;
+            border-top: 1px solid rgba(26, 58, 107, 0.1);
+            background: linear-gradient(135deg, var(--light-blue) 0%, rgba(232, 240, 248, 0.5) 100%);
+            font-size: 12px;
+            color: var(--text-light);
+            font-family: 'Noto Sans KR', sans-serif;
+            position: relative;
+            z-index: 2;
+            margin-top: auto;
+        }
+
+        .footer-divider {
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+            margin: 12px auto;
+        }
+
+        .thank-you {
+            font-size: 15px;
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        /* 반응형 */
+        @media (max-width: 480px) {
+            .container {
+                box-shadow: none;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .main-title {
+                font-size: 26px;
+            }
+
+            .content {
+                padding: 25px 20px;
+            }
+
+            .book-cover-container {
+                max-width: 100%;
+            }
+
+            .book-cover {
+                width: 100%;
+            }
+
+            .message-main {
+                font-size: 17px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="bg-decoration">
+            <div class="deco-circle circle-1"></div>
+            <div class="deco-circle circle-2"></div>
+        </div>
+
+        <div class="header">
+            <div class="invitation-badge">✦ 초대장 ✦</div>
+            <h1 class="main-title">선형수<br>출판기념회</h1>
+            <p class="main-subtitle">따뜻한 말, 응원의 말,<br>사랑의 말로 축하해주세요</p>
+        </div>
+
+        <div class="content">
+            <!-- 책 커버 및 정보 -->
+            <section class="section">
+                <div class="book-cover-section">
+                    <div class="book-cover-container">
+                        <img src="C:\Users\MIN\OneDrive\바탕 화면\출판기념\출판기념 사진1.jpg" alt="선형수 출판기념회" class="book-cover">
+                    </div>
+                </div>
+                <div class="book-info">
+                    <div class="book-title">"세상에 버릴 경험은 없다"</div>
+                    <div class="book-author">저자 | 선형수</div>
+                    <div class="book-publisher">더불어 민주당 민주연구원</div>
+                </div>
+            </section>
+
+            <!-- 행사 정보 -->
+            <section class="section">
+                <div class="event-details">
+                    <div class="detail-item">
+                        <div class="detail-icon">📅</div>
+                        <div class="detail-text">
+                            <div class="detail-label">날짜</div>
+                            <div class="detail-value">2026년 2월 27일 (금)</div>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon">🕐</div>
+                        <div class="detail-text">
+                            <div class="detail-label">시간</div>
+                            <div class="detail-value">오후 3시</div>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon">📍</div>
+                        <div class="detail-text">
+                            <div class="detail-label">장소</div>
+                            <div class="detail-value">봇재 카페<br>보성군 보성읍 녹차로 750</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 메시지 섹션 -->
+            <section class="section">
+                <div class="message-section">
+                    <div class="message-main">한때 18만 5천 보성군민<br>이젠 고작 3만6천.</div>
+                    <div class="message-sub">
+                        초고령사회 소멸도시를 바로 세울<br>
+                        선형수 보성군수 출마자의<br>
+                        출판기념회에 여러분을 초대합니다.
+                    </div>
+                    <div class="message-wish">따뜻한 말, 응원의 말, 사랑의 말<br>축복의 말로 축하해주시면 고맙겠습니다.</div>
+                </div>
+            </section>
+
+            <!-- 초대자 정보 -->
+            <section class="section">
+                <div class="inviter-section">
+                    <div class="inviter-party">더불어 민주당 민주연구원</div>
+                    <div class="inviter-name">선형수</div>
+                    <div class="inviter-position">부원장 🙏</div>
+                    <div class="inviter-gesture">두 손 모아 감사드립니다</div>
+                </div>
+            </section>
+
+
+        </div>
+
+        <div class="footer">
+            <div class="thank-you">감사합니다</div>
+            <div class="footer-divider"></div>
+            <div>함께하는 시간이 소중한 기억이 되기를 바랍니다</div>
+        </div>
+    </div>
+
+    <script>
+    </script>
+</body>
+</html>
